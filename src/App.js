@@ -1,10 +1,13 @@
 import characters from './data/characters';
+import Card from './components/Card';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      {characters.map(c => <div><img src={c.img} /><a href={c.link} target='__blank'>{c.name}</a></div>)}
+      <div className='cards'>
+        {characters.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} />)}
+      </div>
     </div>
   );
 }
