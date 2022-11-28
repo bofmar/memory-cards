@@ -8,6 +8,7 @@ const INITIAL_AMOUNT = 5;
 function App() {
   const [currentCards, setCurrentCards] = useState(getInitialCharacters(shuffle(characters), INITIAL_AMOUNT));
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   function getInitialCharacters(arr, amount) {
     const newArr = []
@@ -36,6 +37,7 @@ function App() {
   }
 
   function gameOver() {
+    setHighScore(prevHigh => score > prevHigh ? score : prevHigh);
     setScore(0);
     setCurrentCards(getInitialCharacters(shuffle(characters), INITIAL_AMOUNT));
   }
@@ -43,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <h1>Score: {score}</h1>
+      <h1>High Score: {highScore}</h1>
       <div className='cards'>
         {currentCards.map(c => <Card key={c.name} {...c} handleClick={handleClick} />)}
       </div>
