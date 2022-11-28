@@ -23,16 +23,17 @@ function App() {
     return arr;
   }
 
-  function handleClick() {
+  function handleClick(clicked) {
     setScore(prevScore => prevScore + 1);
     setCurrentCards(cards => shuffle(cards));
+    console.log(clicked);
   }
 
   return (
     <div className="App">
       <h1>Score: {score}</h1>
       <div className='cards'>
-        {currentCards.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} handleClick={handleClick} />)}
+        {currentCards.map(c => <Card key={c.name} {...c} handleClick={handleClick} />)}
       </div>
     </div>
   );
