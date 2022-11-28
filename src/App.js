@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import characters from './data/characters';
 import Card from './components/Card';
+import logo from './images/logo.png';
 import './App.css';
 
 const INITIAL_AMOUNT = 5;
@@ -58,8 +59,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Score: {score}</h1>
-      <h1>High Score: {highScore}</h1>
+      <header>
+        <div>
+          <img src={logo} alt='smt-logo' />
+          <h1>Shin Megami Tensei - Memory Cards</h1>
+        </div>
+        <div className='scores'>
+          <p className='score'>Score: {score}</p>
+          <span> | </span>
+          <p className='high-score'>High Score: {highScore}</p>
+        </div>
+      </header>
       <div className='cards'>
         {currentCards.map(c => <Card key={c.name} {...c} handleClick={handleClick} />)}
       </div>

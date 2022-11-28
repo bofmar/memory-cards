@@ -2,12 +2,48 @@
 
 .App {
   min-height: 100vh;
-  background-color: #333;
+  background-color: #3E4451;
   font-family: 'Karla', sans-serif;
 }
 
-.cards {
+header {
+  height: 10vh;
+  width: 100%;
+  background-color: #333;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #eee;
+}
+
+header > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header img {
+  height: 80%;
+}
+
+.scores {
+  font-size: 1.5rem;
+}
+
+.score {
+  color: #90ee90;
+}
+
+.high-score {
+  color: #ff7276;
+}
+
+.cards {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 }
