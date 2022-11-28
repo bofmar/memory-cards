@@ -23,9 +23,9 @@ function App() {
     return arr;
   }
 
-  function handleClick(clicked) {
+  function handleClick(clicked, name) {
     setScore(prevScore => prevScore + 1);
-    setCurrentCards(cards => shuffle(cards));
+    setCurrentCards(cards => shuffle(cards.map(card => card.name === name ? { ...card, clicked: true } : card)));
     console.log(clicked);
   }
 
