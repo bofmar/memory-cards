@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import characters from './data/characters';
 import Card from './components/Card';
 import './App.css';
 
 function App() {
+  const [currentCards, setCurrentCards] = useState(shuffle(characters));
 
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -16,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <div className='cards'>
-        {characters.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} />)}
+        {currentCards.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} />)}
       </div>
     </div>
   );
