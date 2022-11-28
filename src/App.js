@@ -4,7 +4,15 @@ import Card from './components/Card';
 import './App.css';
 
 function App() {
-  const [currentCards, setCurrentCards] = useState(shuffle(characters));
+  const [currentCards, setCurrentCards] = useState(getInitialCharacters(shuffle(characters), 5));
+
+  function getInitialCharacters(arr, amount) {
+    const newArr = []
+    for (let i = 0; i < amount; i++) {
+      newArr.push(arr[i]);
+    }
+    return newArr;
+  }
 
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
