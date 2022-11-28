@@ -25,6 +25,7 @@ function App() {
 
   function handleClick() {
     setScore(prevScore => prevScore + 1);
+    setCurrentCards(cards => shuffle(cards));
   }
 
   return (
