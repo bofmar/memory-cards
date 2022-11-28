@@ -3,8 +3,10 @@ import characters from './data/characters';
 import Card from './components/Card';
 import './App.css';
 
+const INITIAL_AMOUNT = 5;
+
 function App() {
-  const [currentCards, setCurrentCards] = useState(getInitialCharacters(shuffle(characters), 5));
+  const [currentCards, setCurrentCards] = useState(getInitialCharacters(shuffle(characters), INITIAL_AMOUNT));
   const [score, setScore] = useState(0);
 
   function getInitialCharacters(arr, amount) {
@@ -24,9 +26,18 @@ function App() {
   }
 
   function handleClick(clicked, name) {
-    setScore(prevScore => prevScore + 1);
-    setCurrentCards(cards => shuffle(cards.map(card => card.name === name ? { ...card, clicked: true } : card)));
-    console.log(clicked);
+    if (clicked === false) {
+      setScore(prevScore => prevScore + 1);
+      setCurrentCards(cards => shuffle(cards.map(card => card.name === name ? { ...card, clicked: true } : card)));
+    }
+    else {
+      gameOver();
+    }
+  }
+
+  function gameOver() {
+    setScore(0);
+    setCurrentCards(getInitialCharacters(shuffle(characters), INITIAL_AMOUNT));
   }
 
   return (
