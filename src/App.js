@@ -5,6 +5,7 @@ import './App.css';
 
 function App() {
   const [currentCards, setCurrentCards] = useState(getInitialCharacters(shuffle(characters), 5));
+  const [score, setScore] = useState(0);
 
   function getInitialCharacters(arr, amount) {
     const newArr = []
@@ -20,13 +21,17 @@ function App() {
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+  }
 
+  function handleClick() {
+    setScore(prevScore => prevScore + 1);
   }
 
   return (
     <div className="App">
+      <h1>Score: {score}</h1>
       <div className='cards'>
-        {currentCards.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} />)}
+        {currentCards.map(c => <Card key={c.name} name={c.name} image={c.img} link={c.link} handleClick={handleClick} />)}
       </div>
     </div>
   );
