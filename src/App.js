@@ -18,7 +18,7 @@ function shuffle(arr) {
 function App() {
   const [currentCards, setCurrentCards] = useState(getInitialCharacters(allCards, INITIAL_AMOUNT));
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(localStorage.getItem('highScore') || 0);
 
   function getInitialCharacters(arr, amount) {
     const newArr = []
@@ -49,6 +49,10 @@ function App() {
       });
     }
   }, [currentCards]);
+
+  useEffect(() => {
+    localStorage.setItem('highScore', highScore);
+  }, [highScore])
 
 
   function gameOver() {
